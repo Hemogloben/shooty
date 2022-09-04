@@ -2,6 +2,7 @@ extends AnimatedSprite
 
 
 export (PackedScene) var Bullet
+onready var in_scene_bullet = get_node("/root/Node2D/BulletPool/Bullet")
 var can_shoot = true ##if you are able to shoot, related to between_shots
 export var between_shots = .25
 onready var firerate = $cooldown

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://goblin/goblin_walk5.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -20,6 +20,29 @@
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=18]
 [ext_resource path="res://goblin/goblin_hand.png" type="Texture" id=19]
 [ext_resource path="res://bitmap_font.tres" type="DynamicFontData" id=20]
+[ext_resource path="res://rat/rat1.png" type="Texture" id=21]
+[ext_resource path="res://rat/rat3.png" type="Texture" id=22]
+[ext_resource path="res://rat/rat2.png" type="Texture" id=23]
+[ext_resource path="res://rat/rat8.png" type="Texture" id=24]
+[ext_resource path="res://rat/rat9.png" type="Texture" id=25]
+[ext_resource path="res://rat/rat7.png" type="Texture" id=26]
+[ext_resource path="res://rat/ratwalk4.png" type="Texture" id=27]
+[ext_resource path="res://rat/ratwalk5.png" type="Texture" id=28]
+[ext_resource path="res://rat/ratwalk1.png" type="Texture" id=29]
+[ext_resource path="res://rat/ratwalk3.png" type="Texture" id=30]
+[ext_resource path="res://rat/ratwalk8.png" type="Texture" id=31]
+[ext_resource path="res://rat/ratwalk7.png" type="Texture" id=32]
+[ext_resource path="res://rat/ratwalk6.png" type="Texture" id=33]
+[ext_resource path="res://rat/ratwalk2.png" type="Texture" id=34]
+[ext_resource path="res://rat/rat6.png" type="Texture" id=35]
+[ext_resource path="res://rat/rat4.png" type="Texture" id=36]
+[ext_resource path="res://rat/rat5.png" type="Texture" id=37]
+[ext_resource path="res://Enemy.gd" type="Script" id=38]
+[ext_resource path="res://LevelManager.gd" type="Script" id=39]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 26.6666
+height = 117.333
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -34,10 +57,6 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 26.6666
-height = 117.333
-
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
@@ -51,20 +70,42 @@ animations = [ {
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 20 )
 
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 24.0
+height = 86.0
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 29 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "WALK",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 26 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "IDLE",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 20 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="Area2D" parent="."]
 position = Vector2( 487, 244 )
+scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 21 )
+scale = Vector2( 0.75, 0.75 )
+shape = SubResource( 2 )
 
 [node name="player_sprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
 animation = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/player_sprite"]
-position = Vector2( 1.90735e-05, 28 )
-shape = SubResource( 2 )
 
 [node name="shitty_gun" type="AnimatedSprite" parent="Player/player_sprite"]
 position = Vector2( 2.66664, 28 )
@@ -96,7 +137,26 @@ theme = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
 text = "|||||"
 
-[node name="BulletPool" type="Node2D" parent="."]
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource( 39 )
 
-[node name="Bullet" parent="BulletPool" instance=ExtResource( 18 )]
-position = Vector2( 487, 244 )
+[node name="Enemy" type="Area2D" parent="."]
+script = ExtResource( 38 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" groups=["mobs"]]
+position = Vector2( 307, 304 )
+shape = SubResource( 6 )
+
+[node name="enemy_sprite" type="AnimatedSprite" parent="Enemy" groups=["mobs"]]
+position = Vector2( 319, 297 )
+frames = SubResource( 7 )
+animation = "WALK"
+
+[node name="health_bar" type="Label" parent="Enemy" groups=["mobs"]]
+margin_left = 272.0
+margin_top = 215.0
+margin_right = 333.0
+margin_bottom = 236.0
+custom_colors/font_color = Color( 0.847059, 0.0627451, 0.0627451, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "|"
