@@ -12,9 +12,20 @@ onready var weapon_box_ui = $weapon_box_ui
 #func _init():
 	#self.weapon_box_ui = get_node("/root/weapon_box_ui")
 
+func getAmmoPips():
+	var pips = ""
+	var counter = 0
+	for i in range(0, magazine_current):
+		pips += "|"
+		counter += 1
+		if counter > 4:
+			counter = 0
+			pips += "\n"
+	return pips	
+
 func _ready():
 	firerate.connect("timeout",self,"_on_cooldown_timeout")
-	weapon_box_ui.text = str(magazine_current)
+	weapon_box_ui.text = getAmmoPips()
 	print(magazine_current)
 
 func _on_cooldown_timeout():
@@ -41,7 +52,7 @@ func shoot():
 		can_shoot = false
 		magazine_current -= 1
 		print(magazine_current)
-		weapon_box_ui.text = str(magazine_current)
+		weapon_box_ui.text = getAmmoPips()
 	elif magazine_current == 0:
 		reload()
 		##is this even the right way to do this? using an if/elif thing? 

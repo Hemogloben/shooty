@@ -88,13 +88,13 @@ process_mode = 0
 one_shot = true
 
 [node name="weapon_box_ui" type="Label" parent="Player/player_sprite/shitty_gun"]
-margin_left = 119.0
-margin_top = 21.0
+margin_left = 100.0
+margin_top = 5.0
 margin_right = 212.0
-margin_bottom = 61.0
+margin_bottom = 80.0
 theme = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
-text = "9"
+text = "|||||"
 
 [node name="BulletPool" type="Node2D" parent="."]
 
