@@ -1,6 +1,7 @@
 extends AnimatedSprite
 
 
+var Name = "ShittyGun"
 export (PackedScene) var Bullet
 onready var in_scene_bullet = get_node("/root/Node2D/BulletPool/Bullet")
 var can_shoot = true ##if you are able to shoot, related to between_shots
@@ -9,6 +10,8 @@ onready var firerate = $cooldown
 export var magazine_max = 5
 var magazine_current = magazine_max
 onready var weapon_box_ui = $weapon_box_ui
+onready var hud_weapon_box_name_ui = get_node("/root/Node2D/HUD/WeaponHUD/Container/Panel/WeaponName")
+onready var hud_weapon_box_ammo_count_ui = get_node("/root/Node2D/HUD/WeaponHUD/Container/Panel/AmmoCount")
 
 #func _init():
 	#self.weapon_box_ui = get_node("/root/weapon_box_ui")
@@ -27,6 +30,8 @@ func getAmmoPips():
 func _ready():
 	firerate.connect("timeout",self,"_on_cooldown_timeout")
 	weapon_box_ui.text = getAmmoPips()
+	hud_weapon_box_name_ui.text = "Gun: " + Name
+	hud_weapon_box_ammo_count_ui.text = "Ammo: " + str(magazine_current)
 	print(magazine_current)
 
 func _on_cooldown_timeout():
@@ -54,6 +59,7 @@ func shoot():
 		magazine_current -= 1
 		print(magazine_current)
 		weapon_box_ui.text = getAmmoPips()
+		hud_weapon_box_ammo_count_ui.text = "Ammo: " + str(magazine_current)
 	elif magazine_current == 0:
 		reload()
 		##is this even the right way to do this? using an if/elif thing? 
