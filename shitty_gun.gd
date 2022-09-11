@@ -3,7 +3,6 @@ extends AnimatedSprite
 
 var Name = "ShittyGun"
 export (PackedScene) var Bullet
-onready var in_scene_bullet = get_node("/root/Node2D/BulletPool/Bullet")
 var can_shoot = true ##if you are able to shoot, related to between_shots
 export var between_shots = .25
 onready var firerate = $cooldown
@@ -13,6 +12,8 @@ onready var weapon_box_ui = $weapon_box_ui
 onready var has_hud = get_node_or_null("/root/Node2D/HUD") != null
 onready var hud_weapon_box_name_ui = get_node("/root/Node2D/HUD/WeaponHUD/Container/Panel/WeaponName")
 onready var hud_weapon_box_ammo_count_ui = get_node("/root/Node2D/HUD/WeaponHUD/Container/Panel/AmmoCount")
+
+var bullet_pool = null
 
 #func _init():
 	#self.weapon_box_ui = get_node("/root/weapon_box_ui")
@@ -35,6 +36,9 @@ func _ready():
 		hud_weapon_box_name_ui.text = "Gun: " + Name
 		hud_weapon_box_ammo_count_ui.text = "Ammo: " + str(magazine_current)
 	print(magazine_current)
+	bullet_pool = get_node_or_null("/root/Node2D/BulletPool")
+	if (!bullet_pool):
+		bullet_pool = get_node("/root")
 
 func _on_cooldown_timeout():
 	can_shoot = true
@@ -59,7 +63,7 @@ func get_input():
 func shoot():
 	if can_shoot and magazine_current > 0:
 		var b = Bullet.instance()
-		get_node("/root").add_child(b)
+		bullet_pool.add_child(b)
 		b.transform = $bullet_spawn.global_transform
 		firerate.start(between_shots)
 		can_shoot = false

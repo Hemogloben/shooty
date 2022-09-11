@@ -11,8 +11,7 @@
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
-
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
+Enemy = ExtResource( 2 )
 
 [node name="HUD" type="Node" parent="."]
 
@@ -47,3 +46,7 @@ margin_right = 141.0
 margin_bottom = 35.0
 theme = ExtResource( 4 )
 text = "Ammo: "
+
+[node name="EnemyPool" type="Node2D" parent="."]
+
+[node name="BulletPool" type="Node2D" parent="."]

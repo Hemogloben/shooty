@@ -42,19 +42,19 @@ scale = Vector2( 0.7, 0.7 )
 script = ExtResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["mobs"]]
-position = Vector2( 307, 304 )
+position = Vector2( 0.857147, -0.999969 )
 shape = SubResource( 6 )
 
 [node name="enemy_sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 319, 297 )
+position = Vector2( 12.8571, -8 )
 frames = SubResource( 7 )
 animation = "walk"
 
 [node name="health_bar" type="Label" parent="."]
-margin_left = 272.0
-margin_top = 215.0
-margin_right = 333.0
-margin_bottom = 236.0
+margin_left = -34.1429
+margin_top = -90.0
+margin_right = 26.8571
+margin_bottom = -69.0
 theme = ExtResource( 19 )
 custom_colors/font_color = Color( 0.847059, 0.0627451, 0.0627451, 1 )
 text = "|"
