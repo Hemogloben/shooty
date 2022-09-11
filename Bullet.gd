@@ -11,6 +11,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Bullet_area_entered(area):
-	print(area.name)
-	if ("Enemy" in area.name):
+	print(area.name + " Hit by Bullet")
+	if (area.is_in_group("mobs")):
 		area.applyDamage(damage)

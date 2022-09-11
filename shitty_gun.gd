@@ -40,6 +40,11 @@ func _on_cooldown_timeout():
 
 func _process(_delta):
 	look_at(get_global_mouse_position())
+	var rot = wrapf(rotation_degrees, 0, 360)
+	if ((rot > 270) or (rot < 90)):
+		scale = Vector2(1, 1)
+	else:
+		scale = Vector2(1, -1)
 	get_input()
 	
 ## get_input() exists because i read a post saying that you wouldnt want 
