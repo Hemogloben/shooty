@@ -49,6 +49,7 @@ animations = [ {
 [node name="Player" type="Area2D"]
 position = Vector2( 487, 244 )
 script = ExtResource( 2 )
+speed = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 21 )

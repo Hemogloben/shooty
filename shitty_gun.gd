@@ -47,7 +47,7 @@ func _ready():
 				hud_weapon_box_ammo_count_ui = weapon_box.get_node_or_null("Panel/AmmoCount")
 	if hud:
 		hud_weapon_box_name_ui.text = "Gun: " + Name
-		hud_weapon_box_ammo_count_ui.text = "Ammo: " + str(magazine_current)				
+		hud_weapon_box_ammo_count_ui.text = "Ammo: " + str(magazine_current)
 
 func _on_cooldown_timeout():
 	can_shoot = true

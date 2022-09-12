@@ -6,6 +6,11 @@ onready var enemy_sprite = $enemy_sprite
 onready var health_bar = $health_bar
 var health = 4
 onready var isSceneTest = (get_parent() == get_tree().root)
+var autonomous = !isSceneTest
+var heading_alpha = 0.7
+var heading_dir = Vector2(0, 0)
+
+onready var player = null
 
 func getHealthPips():
 	var pips = ""
@@ -18,6 +23,8 @@ func applyDamage(damage):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !isSceneTest:
+		player = get_node("/root/Node2D/Player")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +45,17 @@ func _process(delta):
 			velocity.x -= 1
 		if Input.is_action_pressed("move_right"):
 			velocity.x += 1	
+		if Input.is_action_just_pressed("ui_focus_next"):
+			autonomous = !autonomous
+	if autonomous:
+		var new_heading = Vector2()
+		if isSceneTest:
+			new_heading = get_global_mouse_position() - position
+		else:
+			new_heading = player.position - position
+		var alpha = heading_alpha * delta			
+		heading_dir = (1.0 - alpha) * heading_dir + alpha * (new_heading)
+		velocity = heading_dir	
 	processMotion(velocity, delta)
 		
 func processMotion(velocity, delta):

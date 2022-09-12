@@ -14,7 +14,7 @@ func _ready():
 	enemy_pool = get_node_or_null("/root/Node2D/EnemyPool")
 	if (!enemy_pool):
 		enemy_pool = get_node("/root")
-	spawn_timer.connect("timeout", self, "CreateEnemy")	
+	spawn_timer.connect("timeout", self, "CreateEnemy")
 	spawn_timer.wait_time = enemy_spawn_time
 	spawn_timer.one_shot = false
 	add_child(spawn_timer)
