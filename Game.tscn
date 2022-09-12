@@ -10,7 +10,6 @@
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 2, 0 )
 scale = Vector2( 1.66667, 1.66667 )
 current = true
 zoom = Vector2( 4, 4 )

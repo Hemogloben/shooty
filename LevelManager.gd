@@ -6,6 +6,9 @@ var enemy_pool = null
 
 var spawn_timer = Timer.new()
 export var enemy_spawn_time = 1
+export var radius_to_spawn = 500
+
+onready var player = get_node("/root/Node2D/Player")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,11 +31,10 @@ func _ready():
 func CreateEnemy():
 	var e = Enemy.instance()
 	enemy_pool.add_child(e)
-	var x_range = Vector2(100, 400)
-	var y_range = Vector2(100, 400)
 
-	var random_x = randi() % int(x_range[1]- x_range[0]) + 1 + x_range[0] 
-	var random_y =  randi() % int(y_range[1]-y_range[0]) + 1 + y_range[0]
-	var random_pos = Vector2(random_x, random_y)
+	var angle = randf() * 360
+	var x = radius_to_spawn * cos(angle * PI / 180)
+	var y = radius_to_spawn * sin(angle * PI / 180)
+	var random_pos = Vector2(x + player.position.x, y + player.position.y)
 
 	e.transform = Transform2D.IDENTITY.translated(random_pos)
