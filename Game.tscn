@@ -48,6 +48,21 @@ margin_bottom = 35.0
 theme = ExtResource( 4 )
 text = "Ammo: "
 
+[node name="Score" type="Node" parent="Player/Camera2D/HUD"]
+
+[node name="Panel" type="Panel" parent="Player/Camera2D/HUD/Score"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -173.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="Player/Camera2D/HUD/Score/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+text = "Score: "
+valign = 1
+
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
 Enemy = ExtResource( 2 )

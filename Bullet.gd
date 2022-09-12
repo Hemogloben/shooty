@@ -2,24 +2,22 @@ extends Area2D
 
 export var speed = 750
 export var damage = 1
-var destroy = false
+var destroyed = false
 onready var sprite = $AnimatedSprite
 
 func _physics_process(delta):
-	if !destroy:
+	if !destroyed:
 		position += transform.x * speed * delta
-	else:
-		if !sprite.playing:
-			queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 
 func _on_Bullet_area_entered(area):
-	if (area.is_in_group("mobs")):
+	if (area.is_in_group("mobs") and !destroyed):
 		print(area.name + " Hit by Bullet")
 		area.applyDamage(damage)
-		destroy = true
+		destroyed = true
 		sprite.animation = "explosion"
 		sprite.play()
+		sprite.connect("animation_finished", self, "_on_VisibilityNotifier2D_screen_exited")
