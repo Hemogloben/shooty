@@ -3,8 +3,9 @@ extends AnimatedSprite
 
 var Name = "ShittyGun"
 export (PackedScene) var Bullet
-var can_shoot = true ##if you are able to shoot, related to between_shots
+var can_shoot = true
 export var between_shots = .25
+export var reload_time = .75
 onready var firerate = Timer.new()
 export var magazine_max = 5
 var magazine_current = magazine_max
@@ -34,7 +35,7 @@ func getAmmoPips():
 		if counter > 4:
 			counter = 0
 			pips += "\n"
-	return pips	
+	return pips
 
 func _ready():
 	firerate.connect("timeout",self,"_on_cooldown_timeout")
@@ -74,15 +75,14 @@ func shoot():
 		var b = Bullet.instance()
 		bullet_pool.add_child(b)
 		b.transform = $bullet_spawn.global_transform
-		firerate.start(between_shots)
 		magazine_current -= 1
+		if magazine_current == 0:
+			firerate.start(reload_time)
+			reload()
+		else:
+			firerate.start(between_shots)
 		updateAmmoText()
-	elif magazine_current == 0:
-		reload()
 
 func reload():
 	magazine_current = magazine_max
 	updateAmmoText()
-
-
-
