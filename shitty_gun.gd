@@ -5,7 +5,7 @@ var Name = "ShittyGun"
 export (PackedScene) var Bullet
 var can_shoot = true ##if you are able to shoot, related to between_shots
 export var between_shots = .25
-onready var firerate = $cooldown
+onready var firerate = Timer.new()
 export var magazine_max = 5
 var magazine_current = magazine_max
 onready var weapon_box_ui = $weapon_box_ui
@@ -38,6 +38,8 @@ func getAmmoPips():
 
 func _ready():
 	firerate.connect("timeout",self,"_on_cooldown_timeout")
+	firerate.one_shot = true
+	add_child(firerate)
 	bullet_pool = get_node_or_null("/root/Node2D/BulletPool")
 	if (!bullet_pool):
 		bullet_pool = get_node("/root")
@@ -53,7 +55,7 @@ func _ready():
 
 func _on_cooldown_timeout():
 	can_shoot = true
-	firerate.start()
+
 
 func _process(_delta):
 	look_at(get_global_mouse_position())
@@ -65,14 +67,14 @@ func _process(_delta):
 	if Input.is_action_pressed("action 1"):
 		shoot()
 
-		
+
 func shoot():
 	if can_shoot and magazine_current > 0:
+		can_shoot = false
 		var b = Bullet.instance()
 		bullet_pool.add_child(b)
 		b.transform = $bullet_spawn.global_transform
 		firerate.start(between_shots)
-		can_shoot = false
 		magazine_current -= 1
 		updateAmmoText()
 	elif magazine_current == 0:
