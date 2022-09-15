@@ -4,7 +4,7 @@ extends Area2D
 export var speed = 175
 var screen_size
 
-
+onready var gun = $shitty_gun
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,3 +40,5 @@ func _process(delta):
 	if velocity.y != 0:
 		$player_sprite.animation = "walk"
 
+func getGunProperties():
+	return gun.getProperties()

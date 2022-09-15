@@ -61,24 +61,24 @@ scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
 animation = "idle"
 
-[node name="shitty_gun" type="AnimatedSprite" parent="player_sprite"]
-position = Vector2( 2.66664, 28 )
+[node name="shitty_gun" type="AnimatedSprite" parent="."]
+position = Vector2( 1.99997, 21 )
+scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 3 )
 animation = "gun"
 offset = Vector2( 101.334, -2.66669 )
 script = ExtResource( 4 )
 Bullet = ExtResource( 18 )
-magazine_max = 10
 
-[node name="bullet_spawn" type="Position2D" parent="player_sprite/shitty_gun"]
+[node name="bullet_spawn" type="Position2D" parent="shitty_gun"]
 position = Vector2( 153.333, -17.3333 )
 
-[node name="GoblinHand" type="Sprite" parent="player_sprite/shitty_gun"]
+[node name="GoblinHand" type="Sprite" parent="shitty_gun"]
 position = Vector2( 52, 16 )
 z_index = -1
 texture = ExtResource( 19 )
 
-[node name="weapon_box_ui" type="Label" parent="player_sprite/shitty_gun"]
+[node name="weapon_box_ui" type="Label" parent="shitty_gun"]
 margin_left = 100.0
 margin_top = 5.0
 margin_right = 212.0
