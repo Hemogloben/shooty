@@ -6,11 +6,15 @@ var screen_size
 
 onready var gun = $shitty_gun
 
+signal gun_changed(gun)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	$player_sprite.play()
 	$player_sprite.animation = "idle"
+	emit_signal("gun_changed", gun)
+	gun.force_emit_gun_signal()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -39,6 +43,9 @@ func _process(delta):
 		$player_sprite.flip_h = velocity.x < 0
 	if velocity.y != 0:
 		$player_sprite.animation = "walk"
+
+func getGun():
+	return gun
 
 func getGunProperties():
 	return gun.getProperties()

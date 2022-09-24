@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://globals/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://globals/LevelManager.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://entities/trees/Tree.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Paused.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/fonts/bitmap_font_theme.tres" type="Theme" id=8]
+[ext_resource path="res://scenes/WeaponHUD.gd" type="Script" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -24,6 +25,7 @@ smoothing_enabled = true
 [node name="HUD" type="CanvasLayer" parent="Player/Camera2D"]
 
 [node name="WeaponHUD" type="Node" parent="Player/Camera2D/HUD"]
+script = ExtResource( 9 )
 
 [node name="Panel" type="Panel" parent="Player/Camera2D/HUD/WeaponHUD"]
 margin_left = 803.0

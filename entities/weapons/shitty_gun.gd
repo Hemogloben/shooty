@@ -5,11 +5,8 @@ var can_shoot = true
 onready var shot_prevention_timer = Timer.new()
 
 onready var weapon_box_ui = $weapon_box_ui
-onready var player = get_node_or_null("../")
-onready var hud = null
-onready var weapon_box = null
-onready var hud_weapon_box_name_ui = null
-onready var hud_weapon_box_ammo_count_ui = null
+
+signal gun_properties_changed(props)
 
 export (Dictionary) var properties = {
 	name = "ShittyGun",
@@ -22,9 +19,6 @@ export (Dictionary) var properties = {
 var bullet_pool = null
 
 func updateAmmoText():
-	if hud:
-		hud_weapon_box_name_ui.text = "Gun: " + properties.name
-		hud_weapon_box_ammo_count_ui.text = "Ammo: " + str(properties.magazine_current)
 	weapon_box_ui.text = getAmmoPips(properties.magazine_current)
 
 func getAmmoPips(ammo):
@@ -39,22 +33,17 @@ func getAmmoPips(ammo):
 	return pips
 
 func _ready():
-	properties.magazine_current = properties.magazine_max
+	reload()
 	shot_prevention_timer.connect("timeout",self,"enable_shooting")
 	shot_prevention_timer.one_shot = true
 	add_child(shot_prevention_timer)
 	bullet_pool = get_node_or_null("/root/Node2D/BulletPool")
 	if (!bullet_pool):
 		bullet_pool = get_node("/root")
-	if player:
-		hud = player.get_node_or_null("Camera2D/HUD")
-		if hud:
-			weapon_box = hud.get_node_or_null("WeaponHUD")
-			if weapon_box:
-				hud_weapon_box_name_ui = weapon_box.get_node_or_null("Panel/WeaponName")
-				hud_weapon_box_ammo_count_ui = weapon_box.get_node_or_null("Panel/AmmoCount")
 	updateAmmoText()
 
+func force_emit_gun_signal():
+	emit_signal("gun_properties_changed", properties)
 
 func enable_shooting():
 	can_shoot = true
@@ -84,6 +73,7 @@ func shoot():
 		else:
 			shot_prevention_timer.start(properties.time_between_shots)
 		updateAmmoText()
+		emit_signal("gun_properties_changed", properties)
 
 func reload():
 	properties.magazine_current = properties.magazine_max
