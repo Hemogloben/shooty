@@ -2,18 +2,19 @@ extends Area2D
 
 
 export var speed = 175
-var screen_size
+var score = 0
 
 onready var gun = $shitty_gun
 
 signal gun_changed(gun)
+signal score_changed(score)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
 	$player_sprite.play()
 	$player_sprite.animation = "idle"
 	emit_signal("gun_changed", gun)
+	emit_signal("score_changed", score)
 	gun.force_emit_gun_signal()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +44,11 @@ func _process(delta):
 		$player_sprite.flip_h = velocity.x < 0
 	if velocity.y != 0:
 		$player_sprite.animation = "walk"
+
+func add_score(score):
+	self.score += score
+	emit_signal("score_changed", self.score)
+
 
 func getGun():
 	return gun

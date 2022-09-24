@@ -1,6 +1,8 @@
 extends Area2D
 
 
+export (PackedScene) var drop
+
 export var speed = 175
 onready var enemy_sprite = $enemy_sprite
 onready var health_bar = $health_bar
@@ -20,6 +22,8 @@ func getHealthPips():
 
 func applyDamage(damage):
 	health -= damage
+	if health <= 0:
+		kill()
 
 func isAlive():
 	return health > 0
@@ -28,13 +32,11 @@ func isAlive():
 func _ready():
 	if !isSceneTest:
 		player = get_node("/root/Node2D/Player")
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	health_bar.text = getHealthPips()
-	if health <= 0:
-		get_parent().remove_child(self)
+
 	
 	var velocity = Vector2.ZERO
 	if isSceneTest:
@@ -76,3 +78,13 @@ func processMotion(velocity, delta):
 		$enemy_sprite.flip_h = velocity.x < 0
 	if velocity.y != 0:
 		$enemy_sprite.animation = "walk"
+
+func kill():
+	drop_loot()
+	get_parent().remove_child(self)
+	queue_free()
+
+func drop_loot():
+	var loot = drop.instance()
+	loot.position = position
+	get_parent().add_child(loot)
