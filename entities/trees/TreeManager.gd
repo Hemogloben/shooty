@@ -2,7 +2,7 @@ extends Node
 
 var Tree
 
-export var tree_origin_spacing_avg = 1000
+export var tree_origin_spacing_avg = 1300
 export var tree_spacing_variation = 800
 
 onready var player = get_node("/root/Node2D/Player")
