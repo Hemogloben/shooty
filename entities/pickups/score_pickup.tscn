@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/pickups/pickup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/pickups/score_pickup.png" type="Texture" id=2]
 [ext_resource path="res://entities/pickups/score_pickup.gd" type="Script" id=3]
+[ext_resource path="res://addons/godot-next/2d/trail_2d.gd" type="Script" id=4]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 1, Vector2( 1, 1 ), 0.0, 0.0, 1, 0 ]
+_data = [ Vector2( 0, 0.0181818 ), 0.0, 0.918182, 0, 0, Vector2( 0.720297, 0.409091 ), 1.87237, 1.87237, 0, 0, Vector2( 0.863861, 0.8 ), 0.0, 0.0, 0, 0, Vector2( 0.992574, 0.972727 ), 0.0, 0.0, 0, 0 ]
 
 [node name="pickup" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -13,9 +14,9 @@ script = ExtResource( 3 )
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
 
-[node name="Trail2D" parent="." index="2"]
-points = PoolVector2Array( -2, 0 )
+[node name="Trail2D" type="Line2D" parent="." index="2"]
+width = 28.0
 width_curve = SubResource( 1 )
-default_color = Color( 0.121569, 0.584314, 0.619608, 1 )
-trail_length = 100
-persistence = 0
+default_color = Color( 0.4, 0.831373, 0.917647, 1 )
+script = ExtResource( 4 )
+trail_length = 40
