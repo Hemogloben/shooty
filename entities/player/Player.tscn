@@ -99,13 +99,13 @@ margin_bottom = 80.0
 theme = ExtResource( 20 )
 text = "|||||"
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 21 )
-
 [node name="PickupArea" type="Area2D" parent="."]
 
 [node name="PickupCollision" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 21 )
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_PickupArea_area_entered"]
