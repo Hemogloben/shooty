@@ -21,6 +21,9 @@ func getHealthPips():
 func applyDamage(damage):
 	health -= damage
 
+func isAlive():
+	return health > 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !isSceneTest:
