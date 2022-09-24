@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://entities/player/player.gd" type="Script" id=1]
 [ext_resource path="res://entities/weapons/shitty_gun.gd" type="Script" id=2]
@@ -21,6 +21,20 @@
 [ext_resource path="res://entities/weapons/Bullet.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/fonts/bitmap_font_theme.tres" type="Theme" id=20]
 [ext_resource path="res://entities/player/goblin/art/circle..png" type="Texture" id=21]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle6.png" type="Texture" id=22]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle4.png" type="Texture" id=23]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle1.png" type="Texture" id=24]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle7.png" type="Texture" id=25]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle5.png" type="Texture" id=26]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle2.png" type="Texture" id=27]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle3.png" type="Texture" id=28]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_walk2.png" type="Texture" id=29]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_walk4.png" type="Texture" id=30]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_walk5.png" type="Texture" id=31]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_walk3.png" type="Texture" id=32]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_walk6.png" type="Texture" id=33]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_walk7.png" type="Texture" id=34]
+[ext_resource path="res://entities/player/goblin/art/hurt/goblin_walk1.png" type="Texture" id=35]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 26.6666
@@ -36,6 +50,16 @@ animations = [ {
 "frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "walk",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "walk_hurt",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "idle_hurt",
 "speed": 15.0
 } ]
 
@@ -63,7 +87,7 @@ shape = SubResource( 2 )
 [node name="player_sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
-animation = "idle"
+animation = "walk_hurt"
 
 [node name="shitty_gun" type="AnimatedSprite" parent="."]
 position = Vector2( 1.99997, 21 )

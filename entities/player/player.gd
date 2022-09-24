@@ -5,7 +5,9 @@ export var speed = 175
 var score = 0
 
 onready var gun = $shitty_gun
-
+export var invulnerable_time = 2
+onready var invulnerable_timer = Timer.new()
+var invulnerable = false
 export (Dictionary) var properties = {
 	max_health = 4,
 	health_current = 4
@@ -24,6 +26,13 @@ func _ready():
 	gun.force_emit_gun_signal()
 	emit_signal("health_changed", properties)
 
+	invulnerable_timer.connect("timeout",self,"remove_invulnerability")
+	invulnerable_timer.one_shot = true
+	add_child(invulnerable_timer)
+
+func remove_invulnerability():
+	invulnerable = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -37,20 +46,24 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 		
+	var animation = "idle"
 		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$player_sprite.play()
 	else:
-		$player_sprite.animation = "idle"
+		animation = "idle"
 		
 	position += velocity * delta
 	if velocity.x != 0:
-		$player_sprite.animation = "walk"
+		animation = "walk"
 		$player_sprite.flip_v = false
 		$player_sprite.flip_h = velocity.x < 0
 	if velocity.y != 0:
-		$player_sprite.animation = "walk"
+		animation = "walk"
+	if invulnerable:
+		animation += "_hurt"
+	$player_sprite.animation = animation
 
 func add_score(score):
 	self.score += score
@@ -64,12 +77,15 @@ func getGunProperties():
 	return gun.getProperties()
 
 func _on_Player_area_entered(area):
-	if area.is_in_group("mobs"):
+	if area.is_in_group("mobs") and not invulnerable:
 		properties.health_current -= 1
 		# if (properties.health_current < 0):
 			# properties.health_current = 0
 		print("Health: " + str(properties.health_current))	
-		emit_signal("health_changed", properties)	
+		emit_signal("health_changed", properties)
+		invulnerable = true
+		invulnerable_timer.start(invulnerable_time)
+
 
 
 func _on_PickupArea_area_entered(area:Area2D):
