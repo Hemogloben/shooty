@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://globals/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://globals/LevelManager.gd" type="Script" id=2]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/enemies/Enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://entities/pickups/firerate_pickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/trees/Tree.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Paused.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/fonts/bitmap_font_theme.tres" type="Theme" id=8]
@@ -101,12 +100,3 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Paused" parent="GameManager" instance=ExtResource( 7 )]
-
-[node name="pickup" parent="." instance=ExtResource( 5 )]
-position = Vector2( -776, -324 )
-
-[node name="pickup2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1707, 809 )
-
-[node name="pickup3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -3414, 1618 )

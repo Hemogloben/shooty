@@ -3,6 +3,9 @@ extends Area2D
 
 export (PackedScene) var drop
 
+export(Array, PackedScene) var drops
+export (Array, float) var drop_percents
+
 export var speed = 175
 onready var enemy_sprite = $enemy_sprite
 onready var health_bar = $health_bar
@@ -30,6 +33,7 @@ func isAlive():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	if !isSceneTest:
 		player = get_node("/root/Node2D/Player")
 
@@ -85,6 +89,15 @@ func kill():
 	queue_free()
 
 func drop_loot():
-	var loot = drop.instance()
-	loot.position = position
-	get_parent().add_child(loot)
+	var r = randf()
+	var i = 0
+	var total_percent = 0
+	for percent in drop_percents:
+		total_percent += percent
+		if r < total_percent:
+			print("Drop r: " + str(r) + ", total: " + str(total_percent))
+			var loot = drops[i].instance()
+			loot.position = position
+			get_parent().add_child(loot)
+			break
+		i += 1
