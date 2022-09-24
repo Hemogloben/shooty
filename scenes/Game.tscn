@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://globals/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://globals/LevelManager.gd" type="Script" id=2]
@@ -10,6 +10,11 @@
 [ext_resource path="res://assets/fonts/bitmap_font_theme.tres" type="Theme" id=8]
 [ext_resource path="res://scenes/WeaponHUD.gd" type="Script" id=9]
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=10]
+[ext_resource path="res://scenes/HealthPanel.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Heart.tscn" type="PackedScene" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -67,6 +72,18 @@ anchor_bottom = 1.0
 theme = ExtResource( 8 )
 text = "Score: "
 valign = 1
+
+[node name="HealthPanel" type="Panel" parent="Player/Camera2D/HUD"]
+margin_top = 543.0
+margin_right = 111.0
+margin_bottom = 567.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 11 )
+Heart = ExtResource( 12 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/Camera2D/HUD/HealthPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource( 2 )

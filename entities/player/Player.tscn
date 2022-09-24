@@ -108,4 +108,5 @@ shape = SubResource( 4 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 21 )
 
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="area_entered" from="PickupArea" to="." method="_on_PickupArea_area_entered"]

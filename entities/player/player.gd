@@ -6,8 +6,14 @@ var score = 0
 
 onready var gun = $shitty_gun
 
+export (Dictionary) var properties = {
+	max_health = 4,
+	health_current = 4
+}
+
 signal gun_changed(gun)
 signal score_changed(score)
+signal health_changed(props)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +22,7 @@ func _ready():
 	emit_signal("gun_changed", gun)
 	emit_signal("score_changed", score)
 	gun.force_emit_gun_signal()
+	emit_signal("health_changed", properties)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -55,6 +62,14 @@ func getGun():
 
 func getGunProperties():
 	return gun.getProperties()
+
+func _on_Player_area_entered(area):
+	if area.is_in_group("mobs"):
+		properties.health_current -= 1
+		# if (properties.health_current < 0):
+			# properties.health_current = 0
+		print("Health: " + str(properties.health_current))	
+		emit_signal("health_changed", properties)	
 
 
 func _on_PickupArea_area_entered(area:Area2D):
