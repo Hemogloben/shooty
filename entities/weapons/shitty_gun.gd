@@ -40,6 +40,8 @@ func shoot():
 	if can_shoot and properties.magazine_current > 0:
 		can_shoot = false
 		var b = Bullet.instance()
+		b.SetSpeed(properties.bullet_speed)
+		b.SetDamage(properties.bullet_damage)
 		bullet_pool.add_child(b)
 		b.transform = $bullet_spawn.global_transform
 		properties.magazine_current -= 1

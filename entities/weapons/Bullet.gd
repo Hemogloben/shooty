@@ -12,6 +12,11 @@ func _physics_process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
+func SetSpeed(new_speed):
+	speed = new_speed
+	
+func SetDamage(new_damage):
+	damage = new_damage
 
 func _on_Bullet_area_entered(area):
 	if (area.is_in_group("mobs") and !destroyed and area.isAlive()):

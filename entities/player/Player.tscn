@@ -68,6 +68,15 @@ frames = SubResource( 3 )
 animation = "gun"
 offset = Vector2( 101.334, -2.66669 )
 script = ExtResource( 2 )
+properties = {
+"bullet_damage": 2,
+"bullet_speed": 2000,
+"magazine_current": 5,
+"magazine_max": 10,
+"name": "ShittyGun",
+"reload_time": 0.75,
+"time_between_shots": 0.25
+}
 Bullet = ExtResource( 19 )
 
 [node name="bullet_spawn" type="Position2D" parent="shitty_gun"]

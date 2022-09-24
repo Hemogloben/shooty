@@ -7,7 +7,9 @@ export (Dictionary) var properties = {
 	time_between_shots = .25,
 	reload_time = .75,
 	magazine_max = 10,
-	magazine_current = 5#properties.magazine_max
+	magazine_current = 5,#properties.magazine_max
+	bullet_speed = 750,
+	bullet_damage = 2
 }
 
 var bullet_pool = null
