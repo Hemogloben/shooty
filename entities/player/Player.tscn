@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://entities/player/player.gd" type="Script" id=1]
 [ext_resource path="res://entities/weapons/shitty_gun.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://entities/player/goblin/art/goblin_walk6.png" type="Texture" id=18]
 [ext_resource path="res://entities/weapons/Bullet.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/fonts/bitmap_font_theme.tres" type="Theme" id=20]
+[ext_resource path="res://entities/player/goblin/art/circle..png" type="Texture" id=21]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 26.6666
@@ -45,6 +46,9 @@ animations = [ {
 "name": "gun",
 "speed": 5.0
 } ]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 513.016
 
 [node name="Player" type="Area2D"]
 position = Vector2( 487, 244 )
@@ -94,3 +98,14 @@ margin_right = 212.0
 margin_bottom = 80.0
 theme = ExtResource( 20 )
 text = "|||||"
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 21 )
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="PickupCollision" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_PickupArea_area_entered"]

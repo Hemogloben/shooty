@@ -49,3 +49,9 @@ func getGun():
 
 func getGunProperties():
 	return gun.getProperties()
+
+
+func _on_PickupArea_area_entered(area:Area2D):
+	if area.is_in_group("pickups"):
+		area.set_picking_up(self)
+

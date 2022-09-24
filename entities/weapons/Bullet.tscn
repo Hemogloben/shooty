@@ -78,7 +78,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 26.3059
+radius = 44.1814
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource( 2 )
