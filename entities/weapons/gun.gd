@@ -9,7 +9,8 @@ export (Dictionary) var properties = {
 	magazine_max = 10,
 	magazine_current = 5,#properties.magazine_max
 	bullet_speed = 750,
-	bullet_damage = 2
+	bullet_damage = 2,
+	num_bullets = 1
 }
 
 var bullet_pool = null

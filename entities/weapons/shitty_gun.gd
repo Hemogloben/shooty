@@ -39,11 +39,14 @@ func enable_shooting():
 func shoot():
 	if can_shoot and properties.magazine_current > 0:
 		can_shoot = false
-		var b = Bullet.instance()
-		b.SetSpeed(properties.bullet_speed)
-		b.SetDamage(properties.bullet_damage)
-		bullet_pool.add_child(b)
-		b.transform = $bullet_spawn.global_transform
+		var half_angle = (5 * properties.num_bullets) / 2.0
+		for i in range(0, properties.num_bullets):
+			var b = Bullet.instance()
+			b.SetSpeed(properties.bullet_speed)
+			b.SetDamage(properties.bullet_damage)
+			bullet_pool.add_child(b)
+			b.transform = $bullet_spawn.global_transform
+			b.set_rotation(b.rotation - deg2rad(half_angle) + (deg2rad(i*5)))
 		properties.magazine_current -= 1
 		if properties.magazine_current == 0:
 			shot_prevention_timer.start(properties.reload_time)

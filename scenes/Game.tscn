@@ -102,5 +102,11 @@ script = ExtResource( 1 )
 
 [node name="Paused" parent="GameManager" instance=ExtResource( 7 )]
 
-[node name="pickup" parent="." instance=ExtResource( 5 )]
-position = Vector2( -200, -144 )
+[node name="pickup" parent="." groups=["pickups"] instance=ExtResource( 5 )]
+position = Vector2( -776, -324 )
+
+[node name="pickup2" parent="." groups=["pickups"] instance=ExtResource( 5 )]
+position = Vector2( -1707, 809 )
+
+[node name="pickup3" parent="." groups=["pickups"] instance=ExtResource( 5 )]
+position = Vector2( -3414, 1618 )
