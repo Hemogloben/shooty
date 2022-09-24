@@ -1,4 +1,4 @@
-extends "pickup.gd"
+extends "power_pickup.gd"	
 
 func modifyProperties(props):
 	props.time_between_shots *= 0.5
