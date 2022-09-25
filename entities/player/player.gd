@@ -16,6 +16,7 @@ export (Dictionary) var properties = {
 signal gun_changed(gun)
 signal score_changed(score)
 signal health_changed(props)
+signal game_over
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,7 +54,7 @@ func _process(delta):
 		$player_sprite.play()
 	else:
 		animation = "idle"
-		
+
 	position += velocity * delta
 	if velocity.x != 0:
 		animation = "walk"
@@ -85,6 +86,8 @@ func _on_Player_area_entered(area):
 		emit_signal("health_changed", properties)
 		invulnerable = true
 		invulnerable_timer.start(invulnerable_time)
+	if properties.health_current == 0:
+		emit_signal("game_over")
 
 
 
