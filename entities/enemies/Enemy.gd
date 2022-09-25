@@ -19,7 +19,7 @@ onready var player = null
 
 func getHealthPips():
 	var pips = ""
-	for i in range(0, health):
+	for _i in range(0, health):
 		pips += "|"
 	return pips	
 
@@ -98,6 +98,6 @@ func drop_loot():
 			print("Drop r: " + str(r) + ", total: " + str(total_percent))
 			var loot = drops[i].instance()
 			loot.position = position
-			get_parent().add_child(loot)
+			get_parent().call_deferred("add_child", loot)#add_child(loot)
 			break
 		i += 1

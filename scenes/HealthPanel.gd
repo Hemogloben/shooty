@@ -9,7 +9,7 @@ func SetHealth(props):
 	hbox.set("custom_constants/separation", 26)
 	var max_health_diff = props.max_health - hbox.get_child_count()
 	if (max_health_diff > 0):
-		for i in range(0, abs(max_health_diff)):
+		for _i in range(0, abs(max_health_diff)):
 			var heart = Heart.instance()
 			hbox.add_child(heart)
 #	if (max_health_diff < 0):

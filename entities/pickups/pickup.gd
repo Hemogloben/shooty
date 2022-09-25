@@ -6,8 +6,8 @@ var picking_up = false
 
 var player = null
 
-func set_picking_up(player):
-	self.player = player
+func set_picking_up(new_player):
+	player = new_player
 	picking_up = true
 
 func _process(delta):
@@ -15,10 +15,10 @@ func _process(delta):
 		var dir = (player.position - position).normalized()
 		position += dir * pickup_speed * delta
 
-func apply_pickup_to_area(area):
+func apply_pickup_to_area(_area):
 	push_warning("No apply_pickup_to_area implemented")
 
-func modifyProperties(props):
+func modifyProperties(_props):
 	push_warning("No modifyProperties implemented")
 
 func _on_pickup_area_entered(area):

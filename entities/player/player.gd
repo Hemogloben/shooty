@@ -8,10 +8,11 @@ onready var gun = $shitty_gun
 export var invulnerable_time = 2
 onready var invulnerable_timer = Timer.new()
 var invulnerable = false
-export (Dictionary) var properties = {
+export (Dictionary) var base_properties = {
 	max_health = 4,
 	health_current = 4
 }
+var properties = null
 
 signal gun_changed(gun)
 signal score_changed(score)
@@ -20,6 +21,7 @@ signal game_over
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	properties = base_properties.duplicate()
 	$player_sprite.play()
 	$player_sprite.animation = "idle"
 	emit_signal("gun_changed", gun)
@@ -66,9 +68,9 @@ func _process(delta):
 		animation += "_hurt"
 	$player_sprite.animation = animation
 
-func add_score(score):
-	self.score += score
-	emit_signal("score_changed", self.score)
+func add_score(new_points):
+	score += new_points
+	emit_signal("score_changed", score)
 
 
 func getGun():

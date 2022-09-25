@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var player = get_node_or_null("../../")
+onready var player = get_node_or_null("/root/Node2D/Player")
 onready var score_ui = get_node("Score/Panel/Label")
 
 onready var health_ui = get_node("HealthPanel")

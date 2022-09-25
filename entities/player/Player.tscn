@@ -52,14 +52,14 @@ animations = [ {
 "name": "walk",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 35 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "walk_hurt",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "idle_hurt",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "walk_hurt",
 "speed": 15.0
 } ]
 
@@ -96,7 +96,7 @@ frames = SubResource( 3 )
 animation = "gun"
 offset = Vector2( 101.334, -2.66669 )
 script = ExtResource( 2 )
-properties = {
+base_properties = {
 "bullet_damage": 2,
 "bullet_speed": 2000,
 "magazine_current": 5,

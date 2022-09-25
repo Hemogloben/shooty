@@ -2,7 +2,7 @@ extends Node2D
 
 signal gun_properties_changed(props)
 
-export (Dictionary) var properties = {
+export (Dictionary) var base_properties = {
 	name = "ShittyGun",
 	time_between_shots = .25,
 	reload_time = .75,
@@ -12,12 +12,14 @@ export (Dictionary) var properties = {
 	bullet_damage = 2,
 	num_bullets = 1
 }
+var properties = null
 
 var bullet_pool = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	properties = base_properties.duplicate()
 	bullet_pool = get_node_or_null("/root/Node2D/BulletPool")
 	if (!bullet_pool):
 		bullet_pool = get_node("/root")

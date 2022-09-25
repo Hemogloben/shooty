@@ -24,7 +24,7 @@ func _ready():
 	GenerateTrees([-5000, 5000], [-5000, 5000])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var screen_right = player.position.x + screen_size.x * 4
 	var screen_left = player.position.x - screen_size.x * 4
 	var screen_top = player.position.y - screen_size.y * 4
