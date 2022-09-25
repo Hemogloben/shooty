@@ -43,4 +43,4 @@ func CreateEnemy():
 	var y = radius_to_spawn * sin(angle * PI / 180)
 	var random_pos = Vector2(x + player.position.x, y + player.position.y)
 
-	e.transform = Transform2D.IDENTITY.translated(random_pos)
+	e.position = random_pos

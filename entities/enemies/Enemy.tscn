@@ -40,6 +40,7 @@ animations = [ {
 } ]
 
 [node name="Enemy" type="Area2D" groups=["mobs"]]
+scale = Vector2( 2, 2 )
 script = ExtResource( 18 )
 drop = ExtResource( 20 )
 drops = [ ExtResource( 20 ), ExtResource( 21 ) ]
