@@ -73,8 +73,8 @@ valign = 1
 
 [node name="HealthPanel" type="Panel" parent="Player/Camera2D/HUD"]
 margin_top = 543.0
-margin_right = 111.0
-margin_bottom = 567.0
+margin_right = 150.0
+margin_bottom = 577.0
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 11 )
 Heart = ExtResource( 12 )
@@ -82,6 +82,12 @@ Heart = ExtResource( 12 )
 [node name="HBoxContainer" type="HBoxContainer" parent="Player/Camera2D/HUD/HealthPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="Control" parent="Player/Camera2D/HUD/HealthPanel/HBoxContainer" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 34.0
+margin_bottom = 34.0
 
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource( 2 )

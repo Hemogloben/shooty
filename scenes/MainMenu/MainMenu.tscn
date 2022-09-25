@@ -33,7 +33,7 @@ custom_constants/margin_bottom = 16
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 1008.0
-margin_bottom = 157.0
+margin_bottom = 169.0
 size_flags_vertical = 3
 alignment = 1
 
@@ -50,33 +50,32 @@ texture = ExtResource( 2 )
 [node name="HBoxContainer" type="HBoxContainer" parent="BG/MarginContainer/VBoxMain"]
 margin_top = 94.0
 margin_right = 992.0
-margin_bottom = 141.0
+margin_bottom = 153.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="ButtonContainer" type="VBoxContainer" parent="BG/MarginContainer/VBoxMain/HBoxContainer"]
-margin_left = 459.0
-margin_right = 533.0
-margin_bottom = 47.0
+margin_left = 470.0
+margin_right = 521.0
+margin_bottom = 59.0
 size_flags_vertical = 3
 custom_constants/separation = 1
 
 [node name="NewGame" parent="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer" groups=["MainMenu"] instance=ExtResource( 1 )]
-margin_right = 74.0
-margin_bottom = 15.0
+margin_right = 51.0
 text = "New Game"
 
 [node name="Options" parent="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer" instance=ExtResource( 1 )]
-margin_top = 16.0
-margin_right = 74.0
-margin_bottom = 31.0
+margin_top = 20.0
+margin_right = 51.0
+margin_bottom = 39.0
 text = "Options"
 
 [node name="Exit" parent="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer" instance=ExtResource( 1 )]
-margin_top = 32.0
-margin_right = 74.0
-margin_bottom = 47.0
+margin_top = 40.0
+margin_right = 51.0
+margin_bottom = 59.0
 text = "Exit"
 
 [connection signal="pressed" from="BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/NewGame" to="." method="_on_NewGame_pressed"]

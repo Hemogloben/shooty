@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/health_sprite_sheet.png-c63adfb17209ff362420bbb0c7c2be7c.stex"
+path="res://.import/heart_empty.png-bf3636ab86e1ab38b8e2e165932df109.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/goblin/art/health_sprite_sheet.png"
-dest_files=[ "res://.import/health_sprite_sheet.png-c63adfb17209ff362420bbb0c7c2be7c.stex" ]
+source_file="res://entities/player/goblin/art/heart_empty.png"
+dest_files=[ "res://.import/heart_empty.png-bf3636ab86e1ab38b8e2e165932df109.stex" ]
 
 [params]
 

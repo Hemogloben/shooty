@@ -293,7 +293,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/GameTemplate/addons/GameTemplate/plugin.cfg", "res://addons/GameTemplate/plugin.cfg", "res://addons/godot-next/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/GameTemplate/plugin.cfg", "res://addons/godot-next/plugin.cfg" )
 
 [input]
 
