@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
-
-export (PackedScene) var drop
+export (PackedScene) var bullet
 
 export(Array, PackedScene) var drops
 export (Array, float) var drop_percents
@@ -92,7 +91,18 @@ func processMotion(velocity, delta):
 
 func kill():
 	drop_loot()
-	get_parent().remove_child(self)
+	var parent = get_parent()
+	parent.remove_child(self)
+
+	if (player.getGun()):
+		var gun = player.getGun()
+		var props = gun.getProperties()
+		if (props.enemy_bullet_spawn > 0):
+			for i in range(0, props.enemy_bullet_spawn):
+				var b = bullet.instance()
+				b.SetProperties(props)
+				b.transform = Transform2D(randf() * 2 * PI, position)
+				parent.call_deferred("add_child", b)
 	queue_free()
 
 func drop_loot():

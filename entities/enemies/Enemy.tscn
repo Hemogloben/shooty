@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/fonts/bitmap_font_theme.tres" type="Theme" id=19]
 [ext_resource path="res://entities/pickups/score_pickup.tscn" type="PackedScene" id=20]
 [ext_resource path="res://entities/pickups/firerate_pickup.tscn" type="PackedScene" id=21]
+[ext_resource path="res://entities/weapons/Bullet.tscn" type="PackedScene" id=22]
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 19.1429
@@ -47,7 +48,7 @@ height = 58.7144
 scale = Vector2( 2, 2 )
 collision/safe_margin = 0.001
 script = ExtResource( 18 )
-drop = ExtResource( 20 )
+bullet = ExtResource( 22 )
 drops = [ ExtResource( 20 ), ExtResource( 21 ) ]
 drop_percents = [ 0.95, 0.05 ]
 

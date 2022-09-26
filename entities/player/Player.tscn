@@ -98,9 +98,12 @@ script = ExtResource( 2 )
 base_properties = {
 "bullet_damage": 2,
 "bullet_speed": 2000,
+"enemy_bullet_bounce": 0,
+"enemy_bullet_spawn": 0,
 "magazine_current": 5,
 "magazine_max": 10,
 "name": "ShittyGun",
+"num_bullet_bounces": 0,
 "num_bullets": 1,
 "reload_time": 0.75,
 "time_between_shots": 0.5
