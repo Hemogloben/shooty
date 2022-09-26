@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://entities/player/player.gd" type="Script" id=1]
 [ext_resource path="res://entities/weapons/shitty_gun.gd" type="Script" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://entities/player/goblin/art/goblin_idle5.png" type="Texture" id=17]
 [ext_resource path="res://entities/player/goblin/art/goblin_walk6.png" type="Texture" id=18]
 [ext_resource path="res://entities/weapons/Bullet.tscn" type="PackedScene" id=19]
-[ext_resource path="res://assets/fonts/bitmap_font_theme.tres" type="Theme" id=20]
 [ext_resource path="res://entities/player/goblin/art/circle..png" type="Texture" id=21]
 [ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle6.png" type="Texture" id=22]
 [ext_resource path="res://entities/player/goblin/art/hurt/goblin_idle4.png" type="Texture" id=23]
@@ -47,11 +46,6 @@ animations = [ {
 "name": "idle",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "idle_hurt",
@@ -60,6 +54,11 @@ animations = [ {
 "frames": [ ExtResource( 35 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "walk_hurt",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk",
 "speed": 15.0
 } ]
 
@@ -115,14 +114,6 @@ position = Vector2( 153.333, -17.3333 )
 position = Vector2( 52, 16 )
 z_index = -1
 texture = ExtResource( 7 )
-
-[node name="weapon_box_ui" type="Label" parent="shitty_gun"]
-margin_left = 100.0
-margin_top = 5.0
-margin_right = 212.0
-margin_bottom = 80.0
-theme = ExtResource( 20 )
-text = "|||||"
 
 [node name="PickupArea" type="Area2D" parent="."]
 

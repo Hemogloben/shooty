@@ -12,11 +12,19 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Full" type="TextureRect" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 27.0
+margin_bottom = 27.0
 rect_min_size = Vector2( 20, 20 )
 texture = ExtResource( 1 )
 expand = true
 
 [node name="Empty" type="TextureRect" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 27.0
+margin_bottom = 27.0
 rect_min_size = Vector2( 20, 20 )
 texture = ExtResource( 2 )
 expand = true
