@@ -46,6 +46,11 @@ animations = [ {
 "name": "idle",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "idle_hurt",
@@ -54,11 +59,6 @@ animations = [ {
 "frames": [ ExtResource( 35 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "walk_hurt",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk",
 "speed": 15.0
 } ]
 
@@ -101,6 +101,7 @@ base_properties = {
 "magazine_current": 5,
 "magazine_max": 10,
 "name": "ShittyGun",
+"num_bullet_bounces": 0,
 "num_bullets": 1,
 "reload_time": 0.75,
 "time_between_shots": 0.5

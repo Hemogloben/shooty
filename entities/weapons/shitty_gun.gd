@@ -28,8 +28,7 @@ func shoot():
 		var half_angle = (angle_per_bullet * (properties.num_bullets - 1)) / 2.0
 		for i in range(0, properties.num_bullets):
 			var b = Bullet.instance()
-			b.SetSpeed(properties.bullet_speed)
-			b.SetDamage(properties.bullet_damage)
+			b.SetProperties(properties)
 			bullet_pool.add_child(b)
 			b.transform = $bullet_spawn.global_transform
 			b.set_rotation(b.rotation - deg2rad(half_angle) + (deg2rad(i*angle_per_bullet)))
