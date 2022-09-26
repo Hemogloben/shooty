@@ -51,14 +51,14 @@ animations = [ {
 "name": "idle_hurt",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 35 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "walk_hurt",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk",
 "speed": 15.0
 } ]
 
