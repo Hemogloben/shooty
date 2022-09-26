@@ -29,4 +29,9 @@ func _on_Bullet_area_entered(area):
 			sprite.connect("animation_finished", self, "_on_VisibilityNotifier2D_screen_exited")
 		else:
 			bullet_bounces -= 1
-			rotation += to_global(position + Vector2(0, 1)).angle_to(global_position - area.global_position)
+			var next_pos = position + transform.x * speed;
+			var heading_vec = to_global(next_pos - position)
+			if global_position.x < area.global_position.x:
+				rotation += heading_vec.angle_to(global_position - area.global_position)
+			else:
+				rotation += heading_vec.angle_to(area.global_position - global_position)

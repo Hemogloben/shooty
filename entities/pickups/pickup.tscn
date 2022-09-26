@@ -8,6 +8,8 @@ extents = Vector2( 61, 47.5 )
 
 [node name="pickup" type="Area2D" groups=["pickups"]]
 script = ExtResource( 2 )
+pickup_speed = 1000
+accel = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
