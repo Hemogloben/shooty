@@ -78,8 +78,11 @@ func processMotion(velocity, delta):
 	#position += velocity * delta
 	var col = move_and_collide(velocity * delta)
 	if col:
+		heading_alpha = 1
 		var random_dir_change = -1 if randf() < 0.5 else 1
-		move_and_collide(col.remainder.slide(col.normal.rotated(random_dir_change * PI / 4)))
+		move_and_collide(col.remainder.slide(col.normal.tangent() * random_dir_change))
+	else:
+		heading_alpha = 0.7
 	if velocity.x != 0:
 		$enemy_sprite.animation = "walk"
 		$enemy_sprite.flip_v = false
