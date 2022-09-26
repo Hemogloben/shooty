@@ -13,7 +13,8 @@ var player = null
 func set_picking_up(new_player):
 	player = new_player
 	picking_up = true
-	curr_dir = -(player.position - position).normalized()
+	if !curr_dir:
+		curr_dir = -(player.position - position).normalized()
 
 
 func _physics_process(delta):
@@ -21,7 +22,7 @@ func _physics_process(delta):
 		var dir = (player.position - position).normalized()
 		curr_dir = (1 - alpha) * curr_dir + alpha * dir
 		position += curr_dir * pickup_speed * delta
-		#pickup_speed += min(accel * pickup_speed * delta, 2500)
+		pickup_speed += min(accel * pickup_speed * delta, 2500)
 
 func apply_pickup_to_area(_area):
 	push_warning("No apply_pickup_to_area implemented")
