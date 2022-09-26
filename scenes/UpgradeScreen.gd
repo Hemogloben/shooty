@@ -24,6 +24,8 @@ func _ready():
 	reload_btn.connect("pressed", self, "reload_upgrade")
 	num_bullets_btn.connect("pressed", self, "num_bullets_upgrade")
 	bounce_btn.connect("pressed", self, "bounce_upgrade")
+	enemy_bullet_btn.connect("pressed", self, "enemy_bullet_upgrade")
+	enemy_bounce_btn.connect("pressed", self, "enemy_bounce_upgrade")
 
 func score_changed(new_score):
 	score = new_score
@@ -57,6 +59,16 @@ func num_bullets_upgrade():
 func bounce_upgrade():
 	var props = player.getGunProperties()
 	props.num_bullet_bounces += 1
+	finalize_upgrade()
+
+func enemy_bullet_upgrade():
+	var props = player.getGunProperties()
+	props.enemy_bullet_spawn += 1
+	finalize_upgrade()
+
+func enemy_bounce_upgrade():
+	var props = player.getGunProperties()
+	props.enemy_bullet_bounce += 1
 	finalize_upgrade()
 
 func finalize_upgrade():

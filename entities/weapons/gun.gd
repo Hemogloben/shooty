@@ -11,7 +11,9 @@ export (Dictionary) var base_properties = {
 	bullet_speed = 750,
 	bullet_damage = 2,
 	num_bullets = 1,
-	num_bullet_bounces = 0
+	num_bullet_bounces = 0,
+	enemy_bullet_spawn = 0,
+	enemy_bullet_bounce = 0
 }
 var properties = null
 
