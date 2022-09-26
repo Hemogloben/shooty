@@ -19,9 +19,10 @@ func SetDamage(new_damage):
 	damage = new_damage
 
 func _on_Bullet_area_entered(area):
-	if (area.is_in_group("mobs") and !destroyed and area.isAlive()):
-		print(area.name + " Hit by Bullet")
-		area.applyDamage(damage)
+	if (area.is_in_group("mobs") and !destroyed and area.get_parent().isAlive()):
+		var enemy = area.get_parent()
+		print(enemy.name + " Hit by Bullet")
+		enemy.applyDamage(damage)
 		destroyed = true
 		sprite.animation = "explosion"
 		sprite.play()

@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 export (PackedScene) var drop
@@ -38,7 +38,7 @@ func _ready():
 		player = get_node("/root/Node2D/Player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	health_bar.text = getHealthPips()
 
 	
@@ -62,7 +62,7 @@ func _process(delta):
 			new_heading = get_global_mouse_position() - position
 		else:
 			new_heading = player.position - position
-		var alpha = heading_alpha * delta			
+		var alpha = 1#heading_alpha * delta			
 		heading_dir = (1.0 - alpha) * heading_dir + alpha * (new_heading)
 		velocity = heading_dir	
 	processMotion(velocity, delta)
@@ -75,7 +75,11 @@ func processMotion(velocity, delta):
 		$enemy_sprite.animation = "idle"
 		$enemy_sprite.play()
 		
-	position += velocity * delta
+	#position += velocity * delta
+	var col = move_and_collide(velocity * delta)
+	if col:
+		var random_dir_change = -1 if randf() < 0.5 else 1
+		move_and_collide(col.remainder.slide(col.normal.rotated(random_dir_change * PI / 4)))
 	if velocity.x != 0:
 		$enemy_sprite.animation = "walk"
 		$enemy_sprite.flip_v = false

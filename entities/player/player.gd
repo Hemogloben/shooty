@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 export var speed = 175
@@ -37,7 +37,7 @@ func remove_invulnerability():
 	invulnerable = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed("move_up"):
@@ -57,7 +57,8 @@ func _process(delta):
 	else:
 		animation = "idle"
 
-	position += velocity * delta
+	#position += velocity * delta
+	move_and_collide(velocity*delta)
 	if velocity.x != 0:
 		animation = "walk"
 		$player_sprite.flip_v = false
@@ -79,7 +80,7 @@ func getGun():
 func getGunProperties():
 	return gun.getProperties()
 
-func _on_Player_area_entered(area):
+func _on_Area2D_area_entered(area):
 	if area.is_in_group("mobs") and not invulnerable:
 		properties.health_current -= 1
 		# if (properties.health_current < 0):
@@ -96,4 +97,3 @@ func _on_Player_area_entered(area):
 func _on_PickupArea_area_entered(area:Area2D):
 	if area.is_in_group("pickups"):
 		area.set_picking_up(self)
-
